@@ -20,9 +20,23 @@ $router->get('/', function () use ($router) {
 Route::group([
     'prefix' => 'api'
 ], function ($router) {
-    Route::post('login', 'AuthController@login');
-    Route::post('logout', 'AuthController@logout');
-    Route::post('refresh', 'AuthController@refresh');
-    Route::get('user-profile', 'AuthController@me');
+    // Route Auth
+    Route::group([
+        'prefix' => 'auth'
+    ], function ($router) {
+        Route::post('login', 'AuthController@login');
+        Route::post('logout', 'AuthController@logout');
+        Route::post('refresh/{token}', 'AuthController@refresh');
+    });
+
+    // Route User
+    Route::group([
+        'prefix' => 'users',
+        'middleware' => 'auth',
+    ], function ($router) {
+        Route::post('register', 'UserController@register');
+        Route::get('profile', 'UserController@profile');
+
+    });
 
 });

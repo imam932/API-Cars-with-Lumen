@@ -8,49 +8,32 @@ use Illuminate\Support\Facades\Hash;
 
 use App\Models\User;
 
-class AuthController extends Controller
+class UserController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth:api', ['except' => ['login', 'refresh', 'logout']]);
-    }
-
     /**
      * Get a JWT via given credentials.
      *
      * @param  Request  $request
      * @return Response
      */
-    public function login(Request $request)
+    public function register(Request $request)
     {
 
         $this->validate($request, [
-            'email' => 'required|string',
-            'password' => 'required|string',
+            'name' => 'required|string',
+            'email' => 'required|unique:users|email',
+            'password' => 'required|string|min:6',
+            'is_owner' => 'required|boolean',
         ]);
 
-        $user = User::where('email', $request->input('email'))->first();
-        if (!$user) {
-            return response()->json(['message' => 'User Not Found, Please Check or Register Now'], 400);
-        }
+        $user = User::create([
+            'name' => $request->input('email'),
+            'email' => $request->input('email'),
+            'password' => Hash::make($request->input('password')),
+            'is_owner' => $request->input('is_owner'),
+        ]);
 
-        $isValidPassword = Hash::check($request->input('password'), $user->password);
-        if (!$isValidPassword) {
-            return response()->json(['message' => 'Password Does Not Match, Try Again'], 400);
-        }
-
-        $credentials = $request->only(['email', 'password']);
-
-        if (!$token = Auth::attempt($credentials)) {
-            return response()->json(['message' => 'Unauthorized'], 400);
-        }
-
-        return $this->respondWithToken($token);
+        return response()->json(['message' => 'Data added successfully'], 200);
     }
 
      /**
