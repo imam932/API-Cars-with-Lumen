@@ -33,6 +33,6 @@ class BrandsTableSeeder extends Seeder
                 'logo' => ''
             ],
         ];
-        $users = Brand::insert($data);
+        $brand = Brand::insert($data);
     }
 }
