@@ -37,7 +37,7 @@ php -S localhost:8000 -t public
 ```
 8. Run Test
 ```
-.\vendor\bin\phpunit --filter CarTest
+.\vendor\bin\phpunit --filter UserTest
 ```
 
 ## Postman Collection
