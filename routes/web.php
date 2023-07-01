@@ -19,11 +19,11 @@ $router->get('/', function () use ($router) {
 
 Route::group([
     'prefix' => 'api'
-], function ($router) {
+], function () {
     // Route Auth
     Route::group([
         'prefix' => 'auth'
-    ], function ($router) {
+    ], function () {
         Route::post('login', 'AuthController@login');
         Route::post('logout', 'AuthController@logout');
         Route::post('refresh/{token}', 'AuthController@refresh');
@@ -32,10 +32,22 @@ Route::group([
     // Route User
     Route::group([
         'prefix' => 'users',
-        'middleware' => 'auth',
-    ], function ($router) {
+    ], function () {
         Route::post('register', 'UserController@register');
         Route::get('profile', 'UserController@profile');
+
+    });
+
+    // Route Car
+    Route::group([
+        'prefix' => 'cars',
+        'middleware' => 'auth'
+    ], function () {
+        Route::post('/create', 'CarController@create');
+        Route::post('/add-image', 'CarController@add_image');
+        Route::get('/', 'CarController@index');
+        Route::put('/update/{id}', 'CarController@update');
+        Route::delete('/delete/{id}', 'CarController@destroy');
 
     });
 
