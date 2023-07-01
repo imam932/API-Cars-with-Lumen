@@ -11,8 +11,6 @@ use App\Models\Brand;
 use App\Models\Car;
 use App\Models\Image;
 
-use File;
-
 
 class CarController extends Controller
 {

@@ -1,0 +1,349 @@
+{
+	"info": {
+		"_postman_id": "c44f7117-64bb-441c-9e34-c65d3d5d2eec",
+		"name": "Cars API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1493593"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"owner@gmail.com\",\r\n    \"password\": \"test12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}auth/login",
+							"host": [
+								"{{base_url}}auth"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}auth/refresh/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9jYXJzLnRlc3Q6ODA4MFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY4ODA0MzQ1MywiZXhwIjoxNjg4MDQ3MDUzLCJuYmYiOjE2ODgwNDM0NTMsImp0aSI6IlhKZFh6cUoycWpvbkE0WWgiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.C4aPBKuufA8_prji_o-il1QKcB4SCaimYbYTTVnuNF0",
+							"host": [
+								"{{base_url}}auth"
+							],
+							"path": [
+								"refresh",
+								"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9jYXJzLnRlc3Q6ODA4MFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY4ODA0MzQ1MywiZXhwIjoxNjg4MDQ3MDUzLCJuYmYiOjE2ODgwNDM0NTMsImp0aSI6IlhKZFh6cUoycWpvbkE0WWgiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.C4aPBKuufA8_prji_o-il1QKcB4SCaimYbYTTVnuNF0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9jYXJzLnRlc3Q6ODA4MFwvYXBpXC9sb2dpbiIsImlhdCI6MTY4ODA0MzI5MiwiZXhwIjoxNjg4MDQ2ODkyLCJuYmYiOjE2ODgwNDMyOTIsImp0aSI6IjRjRnhHdE5tR3lwVHUxWEUiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.BMn0Y3b3qxHPShtFNF6kyWn3qiYG0ISN4e93qa4vsgI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}auth/logout",
+							"host": [
+								"{{base_url}}auth"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9jYXJzLnRlc3Q6ODA4MFwvYXBpXC9hdXRoXC9yZWZyZXNoXC9leUowZVhBaU9pSktWMVFpTENKaGJHY2lPaUpJVXpJMU5pSjkuZXlKcGMzTWlPaUpvZEhSd09sd3ZYQzlqWVhKekxuUmxjM1E2T0RBNE1Gd3ZZWEJwWEM5aGRYUm9YQzlzYjJkcGJpSXNJbWxoZENJNk1UWTRPREEwTXpRMU15d2laWGh3SWpveE5qZzRNRFEzTURVekxDSnVZbVlpT2pFMk9EZ3dORE0wTlRNc0ltcDBhU0k2SWxoS1pGaDZjVW95Y1dwdmJrRTBXV2dpTENKemRXSWlPakVzSW5CeWRpSTZJakl6WW1RMVl6ZzVORGxtTmpBd1lXUmlNemxsTnpBeFl6UXdNRGczTW1SaU4yRTFPVGMyWmpjaWZRLkM0YVBCS3V1ZkE4X3Byamlfby1pbDFRS2NCNFNDYWltWWJZVFRWbnVORjAiLCJpYXQiOjE2ODgwNDM0NTMsImV4cCI6MTY4ODA0NzA2NSwibmJmIjoxNjg4MDQzNDY1LCJqdGkiOiIwalh2N3hoUTdsU2xaVzcxIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.r2iquic8oTh9IBXPIh2OuGD9ksZm5ef7LtCmHxUdU_A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}users/profile",
+							"host": [
+								"{{base_url}}users"
+							],
+							"path": [
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9jYXJzLnRlc3Q6ODA4MFwvYXBpXC9hdXRoXC9yZWZyZXNoXC9leUowZVhBaU9pSktWMVFpTENKaGJHY2lPaUpJVXpJMU5pSjkuZXlKcGMzTWlPaUpvZEhSd09sd3ZYQzlqWVhKekxuUmxjM1E2T0RBNE1Gd3ZZWEJwWEM5aGRYUm9YQzlzYjJkcGJpSXNJbWxoZENJNk1UWTRPREEwTXpRMU15d2laWGh3SWpveE5qZzRNRFEzTURVekxDSnVZbVlpT2pFMk9EZ3dORE0wTlRNc0ltcDBhU0k2SWxoS1pGaDZjVW95Y1dwdmJrRTBXV2dpTENKemRXSWlPakVzSW5CeWRpSTZJakl6WW1RMVl6ZzVORGxtTmpBd1lXUmlNemxsTnpBeFl6UXdNRGczTW1SaU4yRTFPVGMyWmpjaWZRLkM0YVBCS3V1ZkE4X3Byamlfby1pbDFRS2NCNFNDYWltWWJZVFRWbnVORjAiLCJpYXQiOjE2ODgwNDM0NTMsImV4cCI6MTY4ODA0NzA2NSwibmJmIjoxNjg4MDQzNDY1LCJqdGkiOiIwalh2N3hoUTdsU2xaVzcxIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.r2iquic8oTh9IBXPIh2OuGD9ksZm5ef7LtCmHxUdU_A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}users/profile",
+							"host": [
+								"{{base_url}}users"
+							],
+							"path": [
+								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Car",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9jYXJzLnRlc3Q6ODA4MFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY4ODEzMjI1MywiZXhwIjoxNjg4MTM1ODUzLCJuYmYiOjE2ODgxMzIyNTMsImp0aSI6ImJsTWtLVnVmMHNTNXh3S2YiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.qMu1mB6pC8S9O6wCmBNCXR3N4NWGHmemcCbvfQ_fpgU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Avanza",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Lorem ipsum, atau ringkasnya lipsum, adalah teks standar yang ditempatkan untuk mendemostrasikan elemen grafis atau presentasi visual seperti font, tipografi, dan tata letak",
+									"type": "text"
+								},
+								{
+									"key": "brand_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "utama",
+									"type": "file",
+									"src": "/D:/writer/enable expose.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}cars/create",
+							"host": [
+								"{{base_url}}cars"
+							],
+							"path": [
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9jYXJzLnRlc3Q6ODA4MFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY4ODE3MjY4MCwiZXhwIjoxNjg4MTc2MjgwLCJuYmYiOjE2ODgxNzI2ODAsImp0aSI6IlR4VjRKN2lUSmR2NHZ4bVkiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.WMZ2Q1djkVrudjReb8WHiQIXuQPUKptAY7ZJrrmMgfI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Avansa WZ",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Lorem ipsum, atau ringkasnya lipsum, adalah teks standar yang ditempatkan untuk mendemostrasikan elemen grafis atau presentasi visual seperti font, tipografi, dan tata letak",
+									"type": "text"
+								},
+								{
+									"key": "brand_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}cars/update/14",
+							"host": [
+								"{{base_url}}cars"
+							],
+							"path": [
+								"update",
+								"14"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Image",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9jYXJzLnRlc3Q6ODA4MFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY4ODE2ODkzMiwiZXhwIjoxNjg4MTcyNTMyLCJuYmYiOjE2ODgxNjg5MzIsImp0aSI6IkhHYXFkckJYT2JieGNYazgiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.SLYRBQzRkStbkNlB8ishObRjL75ryivGbdrPMPpsDr8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/D:/Template website/24-news.png.jpg"
+								},
+								{
+									"key": "short_by",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "car_id",
+									"value": "14",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}cars/add-image",
+							"host": [
+								"{{base_url}}cars"
+							],
+							"path": [
+								"add-image"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "index",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9jYXJzLnRlc3Q6ODA4MFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY4ODE2ODkzMiwiZXhwIjoxNjg4MTcyNTMyLCJuYmYiOjE2ODgxNjg5MzIsImp0aSI6IkhHYXFkckJYT2JieGNYazgiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.SLYRBQzRkStbkNlB8ishObRjL75ryivGbdrPMPpsDr8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}cars",
+							"host": [
+								"{{base_url}}cars"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9jYXJzLnRlc3Q6ODA4MFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY4ODE3Njk3OSwiZXhwIjoxNjg4MTgwNTc5LCJuYmYiOjE2ODgxNzY5NzksImp0aSI6IlZhcjd4WkJka1oydng2d1UiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.JhGHMKDrkw4-cXZ328Y5ECF1V-RRVxvQcyB2uft4TC8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}cars/delete/15",
+							"host": [
+								"{{base_url}}cars"
+							],
+							"path": [
+								"delete",
+								"15"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
