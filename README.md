@@ -35,6 +35,10 @@ php artisan db:seed
 ```
 php -S localhost:8000 -t public
 ```
+8. Run Test
+```
+.\vendor\bin\phpunit --filter CarTest
+```
 
 ## Postman Collection
 [Link postman](https://github.com/imam932/API-Cars-with-Lumen/blob/master/Cars%20API.postman_collection.json)
