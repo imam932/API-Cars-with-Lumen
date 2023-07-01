@@ -125,15 +125,24 @@
 								}
 							]
 						},
-						"method": "GET",
+						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Egi Coco\",\r\n    \"email\": \"egi@ymail.com\",\r\n    \"password\": \"test12345\",\r\n    \"is_owner\": \"0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "{{base_url}}users/profile",
+							"raw": "{{base_url}}users/register",
 							"host": [
 								"{{base_url}}users"
 							],
 							"path": [
-								"profile"
+								"register"
 							]
 						}
 					},
