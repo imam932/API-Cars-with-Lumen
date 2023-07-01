@@ -149,9 +149,183 @@ set environtment url `{{base_url}}` with value `http://localhost:8000/api/`
         "updated_at": null
     }
     ```
-    
-3. Car
 
+3. Car
+    * List Car
+    ```
+    GET {{base_url}}cars
+    ```
+    Authorize
+    ```
+    Authorization Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9jYXJzLnRlc3Q6ODA4MFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY4ODIwMDE4OSwiZXhwIjoxNjg4MjAzNzg5LCJuYmYiOjE2ODgyMDAxODksImp0aSI6InJxYXBvbmc1dTBVRjFKRG8iLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.3hFBCEb84IpNNPWdo4NlWCuNCHIphnKa8i1qtRTULlU
+    ```
+    Response
+    ```json
+    {
+        "current_page": 1,
+        "data": [
+            {
+                "id": 14,
+                "name": "Avansa WZ",
+                "description": "Lorem ipsum, atau ringkasnya lipsum, adalah teks standar yang ditempatkan untuk mendemostrasikan elemen grafis atau presentasi visual seperti font, tipografi, dan tata letak",
+                "brand_id": 1,
+                "created_by": "1",
+                "updated_by": "1",
+                "created_at": "2023-06-30T13:37:42.000000Z",
+                "updated_at": "2023-07-01T01:31:22.000000Z",
+                "brand": {
+                    "id": 1,
+                    "name": "Toyota",
+                    "logo": "",
+                    "created_by": null,
+                    "updated_by": null,
+                    "created_at": null,
+                    "updated_at": null
+                },
+                "images": [
+                    {
+                        "id": 4,
+                        "car_id": 14,
+                        "image": "cars/avanza-utama-30-June-2023-133742.png",
+                        "short_by": 0,
+                        "created_at": "2023-06-30T13:37:42.000000Z",
+                        "updated_at": "2023-06-30T13:37:42.000000Z"
+                    },
+                    {
+                        "id": 5,
+                        "car_id": 14,
+                        "image": "cars/avanza-01-July-2023-000653.jpg",
+                        "short_by": 1,
+                        "created_at": "2023-07-01T00:06:53.000000Z",
+                        "updated_at": "2023-07-01T00:06:53.000000Z"
+                    }
+                ]
+            }
+        ],
+        "first_page_url": "http://cars.test:8080/api/cars?page=1",
+        "from": 1,
+        "last_page": 1,
+        "last_page_url": "http://cars.test:8080/api/cars?page=1",
+        "links": [
+            {
+                "url": null,
+                "label": "pagination.previous",
+                "active": false
+            },
+            {
+                "url": "http://cars.test:8080/api/cars?page=1",
+                "label": "1",
+                "active": true
+            },
+            {
+                "url": null,
+                "label": "pagination.next",
+                "active": false
+            }
+        ],
+        "next_page_url": null,
+        "path": "http://cars.test:8080/api/cars",
+        "per_page": 10,
+        "prev_page_url": null,
+        "to": 1,
+        "total": 1
+    }
+    ```
+
+    * Create Car
+    ```
+    POST {{base_url}}cars/create
+    ```
+    Authorize
+    ```
+    Authorization Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9jYXJzLnRlc3Q6ODA4MFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY4ODIwMDE4OSwiZXhwIjoxNjg4MjAzNzg5LCJuYmYiOjE2ODgyMDAxODksImp0aSI6InJxYXBvbmc1dTBVRjFKRG8iLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.3hFBCEb84IpNNPWdo4NlWCuNCHIphnKa8i1qtRTULlU
+    ```
+    set header
+    ```
+    Content-Type: multipart/form-data
+    ```
+    with body
+    ```json
+    {
+        "name": "Egi Coco",
+        "description": "Lorem ipsum, atau ringkasnya lipsum, adalah teks standar yang ditempatkan untuk mendemostrasikan elemen grafis atau presentasi visual seperti font, tipografi, dan tata letak",
+        "brand_id": "1",
+        "utama": ""
+    }
+    ```
+    Response
+    ```json
+    {
+        "message": "Data added successfully"
+    }
+    ```
+
+    * Add Image Car
+    ```
+    POST {{base_url}}cars/add-image
+    ```
+    Authorize
+    ```
+    Authorization Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9jYXJzLnRlc3Q6ODA4MFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY4ODIwMDE4OSwiZXhwIjoxNjg4MjAzNzg5LCJuYmYiOjE2ODgyMDAxODksImp0aSI6InJxYXBvbmc1dTBVRjFKRG8iLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.3hFBCEb84IpNNPWdo4NlWCuNCHIphnKa8i1qtRTULlU
+    ```
+    set header
+    ```
+    Content-Type: multipart/form-data
+    ```
+    with body
+    ```json
+    {
+        "image": "24-news.png.jpg",
+        "short_by": "1",
+        "car_id": "2"
+    }
+    ```
+    Response
+    ```json
+    {
+        "message": "Data Image added successfully"
+    }
+    ```
+
+    * Update Car
+    ```
+    PUT {{base_url}}cars/update/14
+    ```
+    Authorize
+    ```
+    Authorization Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9jYXJzLnRlc3Q6ODA4MFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY4ODIwMDE4OSwiZXhwIjoxNjg4MjAzNzg5LCJuYmYiOjE2ODgyMDAxODksImp0aSI6InJxYXBvbmc1dTBVRjFKRG8iLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.3hFBCEb84IpNNPWdo4NlWCuNCHIphnKa8i1qtRTULlU
+    ```
+    with body
+    ```json
+    {
+        "name": "Egi Coco",
+        "description": "Lorem ipsum, atau ringkasnya lipsum, adalah teks standar yang ditempatkan untuk mendemostrasikan elemen grafis atau presentasi visual seperti font, tipografi, dan tata letak",
+        "brand_id": "1",
+    }
+    ```
+    Response
+    ```json
+    {
+        "message": "Data update successfully"
+    }
+    ```
+
+    * Delete Car
+    ```
+    DELETE {{base_url}}cars/delete/15
+    ```
+    Authorize
+    ```
+    Authorization Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9jYXJzLnRlc3Q6ODA4MFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY4ODIwMDE4OSwiZXhwIjoxNjg4MjAzNzg5LCJuYmYiOjE2ODgyMDAxODksImp0aSI6InJxYXBvbmc1dTBVRjFKRG8iLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.3hFBCEb84IpNNPWdo4NlWCuNCHIphnKa8i1qtRTULlU
+    ```
+    
+    ```
+    Response
+    ```json
+    {
+        "message": "Data delete successfully"
+    }
+    ```
 
 ## Package
 
